@@ -1,0 +1,143 @@
+.profiles {
+  padding: 1rem;
+  background-color: #fdf2f8;
+  
+}
+
+.profileCard {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  height: 180px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.profileCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profileCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: calc(100% - 20px);
+}
+
+.profileInfo p {
+  margin: 0;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: bold;
+  display: inline;
+}
+
+.ageRole {
+  font-size: 12px;
+  font-weight: normal;
+  color:rgb(227, 224, 224); 
+}
+
+.role {
+  font-size: 12px;
+  color:rgb(227, 224, 224); 
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(228, 224, 224, 0.959);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.actionButtons {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 5px;
+  width: 50px;
+  height: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: space-around;
+}
+
+.actionButtons::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  bottom: 48px;
+  left: 10%;
+  width: 3px;
+  
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.iconButton {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  margin-left: 6px;
+}
+
+.col {
+  flex: 0 0 auto;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+
+@media (min-width: 480px) {
+  .col-xs-6 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: 33.333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-2 {
+    width: 16.666667%;
+  }
+}
+
+.marginBottom4 {
+  margin-bottom: 1.5rem; 
+}

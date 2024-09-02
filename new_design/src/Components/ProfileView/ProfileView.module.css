@@ -1,0 +1,599 @@
+.profileViewContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  background-size: cover;
+  padding: 0;
+}
+
+.messageOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  /* Allow interaction if needed */
+}
+
+.errorOverlay {
+  color: rgb(211, 52, 52);
+}
+
+.successOverlay {
+  color: rgb(40, 126, 40);
+}
+
+.backgroundDimmer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  /* Prevent interaction with the background */
+  pointer-events: none;
+}
+
+.topContainer {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.topContainer>* {
+  position: relative;
+  z-index: 2;
+}
+
+.topLeftArrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.342);
+}
+
+.topRightLocation {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 2px;
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 5px 10px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.342);
+  cursor: pointer;
+}
+
+.topRightLocation i {
+  margin-right: 5px;
+}
+
+.topRightLocation p {
+  margin-top: 12px;
+}
+
+.userDetails {
+  margin-top: 400px;
+  text-align: center;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.userPlace {
+  font-size: 18px;
+  margin: 5px 0;
+  letter-spacing: 2px;
+}
+
+.matchingContainer {
+  display: flex;
+  align-items: center;
+  background-color: #5d1451;
+  border-radius: 40px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: 3px solid #bb4ea9c7;
+  height: 60px;
+}
+
+.matchingPercentage {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(#bb4ea9c7 0% 80%, #5d1451 80% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerCircle {
+  background-color: #5d1451;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentageNumber {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: -8px;
+  color: white;
+  margin: 0;
+}
+
+.percentageIcon {
+  font-size: 14px;
+  color: white;
+  margin: 0;
+  margin-bottom: -25px;
+}
+
+.matchText {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.torchEffect::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 230px;
+  background: linear-gradient(to top, #582650, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bottomContainer {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.aboutHeading {
+  font-size: 30px;
+  color: rgb(146, 140, 140);
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.aboutContent {
+  font-size: 22px;
+  color: black;
+  font-weight: 500;
+  margin-top: -15px;
+}
+
+.interests {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.interestHeading {
+  font-size: 30px;
+  color: rgb(146, 140, 140);
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.interestTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.interestTag {
+  background-color: #e1d8f1;
+  color: #58084b;
+  font-weight: 500;
+  height: 50px;
+  width: 150px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.979);
+  border-top: 1px solid #f8eeee;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  margin-bottom: 20px;
+  height: 45px;
+  margin-left: 8%;
+}
+
+.footerButton {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dislikeButton {
+  color: white;
+  background: rgb(253, 175, 146);
+}
+
+.starButton {
+  color: white;
+  background: #5d1451;
+}
+
+.likeButton {
+  color: white;
+  background: rgb(240, 127, 215);
+}
+
+.likeButton:hover .heartHoverText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.heartHoverText {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 20%;
+  left: 60%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 12px;
+}
+
+.chatButton {
+  color: white;
+  background: rgb(238, 181, 226);
+}
+
+@media (max-width: 768px) {
+  .topContainer {
+    height: 40vh;
+  }
+
+  .username {
+    font-size: 20px;
+  }
+
+  .userPlace {
+    font-size: 16px;
+  }
+
+  .aboutContent {
+    font-size: 16px;
+  }
+
+  .interestTag {
+    height: 35px;
+    width: 100px;
+    font-size: 12px;
+  }
+
+  .matchText {
+    font-size: 18px;
+  }
+
+  .footerButton {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 767px) {
+  .topContainer {
+    height: 100vh;
+  }
+
+  .topLeftArrow {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .topRightLocation {
+    font-size: 14px;
+    height: 30px;
+    margin-right: 10px;
+    letter-spacing: 0;
+    padding: 4px 8px;
+  }
+
+  .userDetails {
+    margin-top: 420px;
+  }
+
+  .username {
+    font-size: 22px;
+  }
+
+  .userPlace {
+    font-size: 14px;
+  }
+
+  .matchingContainer {
+    padding: 8px 16px;
+    height: 38px;
+  }
+
+  .circle {
+    width: 45px;
+    height: 45px;
+  }
+
+  .innerCircle {
+    width: 35px;
+    height: 35px;
+  }
+
+  .percentageNumber {
+    font-size: 16px;
+  }
+
+  .percentageIcon {
+    font-size: 12px;
+    margin-bottom: -17px;
+  }
+
+  .matchText {
+    font-size: 20px;
+  }
+
+  .aboutHeading {
+    margin: 0px 20px;
+    font-size: 20px;
+    text-align: left;
+    width: 100%;
+    margin-left: 55px;
+  }
+
+  .aboutContent {
+    font-size: 16px;
+    margin: 0 20px;
+    text-align: left;
+  }
+
+  .interestHeading {
+    font-size: 20px;
+    margin: 20px;
+    text-align: left;
+    width: 100%;
+    margin-left: 55px;
+  }
+
+  .interestTags {
+    margin: 0 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-left: 20px;
+    overflow-x: auto;
+  }
+
+  .interestTag {
+    height: 40px;
+    width: 100px;
+    font-size: 14px;
+    flex: 0 0 auto;
+  }
+
+  .footerContainer {
+    margin-left: 5%;
+  }
+}
+
+/* .profileViewContainer {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.backButton,
+.distance {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.distance {
+  border-radius: 20px;
+  width: auto;
+  padding: 0 15px;
+}
+
+.userInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.userName {
+  font-size: 28px;
+  margin: 0;
+}
+
+.userLocation {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.matchContainer {
+  display: flex;
+  align-items: center;
+  background: rgba(128, 0, 128, 0.6);
+  border-radius: 25px;
+  padding: 5px 15px;
+  width: fit-content;
+}
+
+.matchPercentage {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.profileDetails {
+  background: white;
+  color: black;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+}
+
+.about h2,
+.interests h2 {
+  color: #888;
+  font-size: 18px;
+}
+
+.interestTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interestTags span {
+  background: #f0f0f0;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.actionButtons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  color: white;
+}
+
+.dislike {
+  background-color: #ff6b6b;
+}
+
+.star {
+  background-color: #5d1451;
+}
+
+.like {
+  background-color: #ff9ff3;
+}
+
+.chat {
+  background-color: #feca57;
+} */

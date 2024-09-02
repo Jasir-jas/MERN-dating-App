@@ -1,0 +1,217 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+}
+
+.right-side-modal {
+    position: fixed;
+    top: 2%;
+    right: -100%;
+    height: 80vh;
+    width: 300px;
+    background-color: rgba(71, 2, 71, 0.8);
+    transition: right 0.5s ease-in-out;
+    border-radius: 2%;
+    z-index: 1000;
+    overflow: hidden; 
+}
+
+.right-side-modal.open {
+    right: 0.2rem;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; 
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 3px solid red;
+}
+
+.online-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #4caf50;
+    border-radius: 50%;
+}
+
+.profile-info h3 {
+    margin: 0;
+    color: rgb(207, 42, 42);
+    font-size: 1.4rem;
+}
+
+.profile-info h4 {
+    margin: 0;
+    color: rgb(241, 206, 33);
+    font-size: 1rem;
+}
+
+.profile-info p {
+    margin: 2px 0;
+    color: rgb(125, 231, 80);
+    font-size: 0.8rem;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    background: transparent;
+    padding: 8px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.modal-body {
+    flex-grow: 1;
+    padding: 0 20px;
+    overflow-y: auto;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-body ul a {
+    text-decoration: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.modal-body li {
+    padding: 8px 0;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.logout-button {
+    background: none;
+    width: 100%;
+    padding-bottom: 2rem;
+    color: rgb(240, 238, 240);
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .right-side-modal {
+        width: 350px;
+        height: 80vh;
+    }
+    .profile-info h3 {
+        font-size: 1.2rem;
+    }
+    .profile-info h4 {
+        font-size: 1rem;
+    }
+    .profile-info p {
+        font-size: 1rem;
+    }
+    .modal-body ul a {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .right-side-modal {
+        width: 300px;
+        height: 85vh;
+    }
+    .profile-info h3 {
+        font-size: 1.4rem;
+        padding: 2px;
+    }
+    .profile-info h4 {
+        font-size: 1rem;
+        padding: 2px;
+    }
+    .profile-info p {
+        font-size: 0.9rem;
+        padding: 2px;
+    }
+    .modal-body ul a {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .right-side-modal {
+        width: 260px;
+        height: 85vh;
+    }
+    .profile-info h3 {
+        font-size: 1.2rem;
+    }
+    .profile-info h4 {
+        font-size: 0.9rem;
+    }
+    .profile-info p {
+        font-size: 0.8rem;
+    }
+    .modal-body ul a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .right-side-modal {
+        width: 240px;
+        height: 85vh;
+    }
+    .modal-header {
+        padding: 10px;
+    }
+    .profile-info h3 {
+        font-size: 1rem;
+    }
+    .profile-info h4 {
+        font-size: 0.8rem;
+    }
+    .profile-info p {
+        font-size: 0.7rem;
+    }
+    .modal-body {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,128 @@
+.subscriptionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: black;
+    overflow: hidden; 
+    margin: 0;
+  }
+  
+  .subscriptionContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 10px; */
+    padding-bottom: 100px; 
+    margin-left: 20%;
+    margin-right:20%;
+  }
+  
+  .header {
+    width: 100%;
+    background-color: #4a1354; 
+    padding: 25px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .headerTitle {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .planCard {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .planTitle {
+    font-size: 22px;
+    font-weight: bold;
+    /* margin-bottom: 5px; */
+    margin-top: 5px;
+  }
+  
+  .planPrice {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .planFeatures {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .planFeatureItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .featureHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: -8px;
+    font-size: 14px;
+  }
+  
+  .tickIcon {
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .featureContent {
+    flex: 1;
+    width: 100%;
+    text-align: left;
+    margin-left: 50px;
+    font-size: 12px;
+  }
+
+  .featureContent p {
+    margin: 5px;
+  }
+
+  .featureContent ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 10px;
+    color: #fff; 
+  }
+  
+  .separator {
+    border: none;
+    border-bottom: 2px solid white;
+    width: 100%; 
+    margin: 5px 0;
+  }
+  
+  .subscribeButton {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffffd8;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .subscribeButton:hover {
+    background-color: #bdc3c7;
+  }
+  

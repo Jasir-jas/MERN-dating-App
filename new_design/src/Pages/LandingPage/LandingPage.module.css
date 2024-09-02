@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.circleContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px dotted #e0e0e0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle.large {
+  width: 300px;
+  height: 300px;
+}
+
+.circle.medium {
+  width: 220px;
+  height: 220px;
+  background-color: rgba(211, 135, 204, 0.2);
+  /* light pink circle */
+  border: 2px solid #e0e0e0;
+}
+
+.circle.small {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  /* light pink circle */
+  border: 2px solid #e0e0e0;
+}
+
+.avatar {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  /* Ensure images cover the element */
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn {
+  width: 65%;
+  padding: 5px 0;
+  margin: 10px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn .iconImage {
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  background-color: #e0e0e0;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.btn.primary {
+  background-color: #4B134F;
+  color: #fff;
+}
+
+.btn.secondary {
+  background-color: #F8E8F2;
+  color: #4B134F;
+}
+
+.signupText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}
+
+.signupText a {
+  color: #ff4081;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+}
+
+.modal h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn.social {
+  background-color: #ddd;
+  color: #333;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+.btn.register {
+  background-color: #333;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}

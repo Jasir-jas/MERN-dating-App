@@ -1,0 +1,36 @@
+.container{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.paymenttype{
+    display: flex;
+    flex-direction: column;
+}
+.container>h1{
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+.paymenttype>h1{
+    font-size: 0.9rem;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px -5px black;
+    padding: 10px;
+    align-items: center;
+}
+.content>select{
+    background-color: rgb(30, 30, 109);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.content>img{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}

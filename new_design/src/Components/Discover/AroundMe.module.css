@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 5px;
+    width: 100%;
+    font-size: 0.8rem;
+}
+.description{
+    font-size: 13px;
+    color: gray;
+    text-wrap: nowrap;
+}
+.map>img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    height: 200px;
+}
+.span{
+    color:#ec9ab6;
+}

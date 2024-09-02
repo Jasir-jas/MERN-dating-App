@@ -1,0 +1,54 @@
+.modalDialog {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.modalContent {
+  background: transparent; 
+  border: none; 
+  padding: 0; 
+}
+
+
+
+
+.modalTitle {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.btnPrimary {
+  background: #4b06ba;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btnDanger {
+  background: linear-gradient(to right, #fd2a46, #fd2a46);
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btnInfo {
+  background: linear-gradient(to right, #2f80ed, white);
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.my-2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.9); 
+  backdrop-filter: blur(2000px); 
+}

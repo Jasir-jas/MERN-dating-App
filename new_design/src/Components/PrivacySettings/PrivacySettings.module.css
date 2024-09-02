@@ -1,0 +1,171 @@
+.privacySettingsContainer {
+    margin: 0 auto;
+    background-color: #5d1451;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 16px;
+    height: 100px;
+    border-radius: 10px 10px 0 0;
+}
+
+.searchIcon {
+    width: 45px;
+    height: 45px;
+    background-color: #e295d5;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.content {
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 50px 50px 0 0;
+}
+
+.section {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.sectionLastChild {
+    border-bottom: none;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.value,
+.changePassword {
+    color: #555;
+}
+
+.changePassword {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.changePassword:hover {
+    text-decoration: underline;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switchInput {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #4b0d52;
+}
+
+input:checked+.slider:before {
+    transform: translateX(14px);
+}
+
+.resetButton {
+    width: 70%;
+    background-color: #4b0d52;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-left: 15%;
+}
+
+.resetButton i {
+    margin-right: 8px;
+}
+
+.resetButtonHover:hover {
+    background-color: #3a0b41;
+}
+
+@media (max-width: 768px) {
+
+    .content {
+        padding: 8px;
+    }
+
+    .label {
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 350px) {
+    .header {
+        margin-right: 60px;
+    }
+
+    .headerTitle {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .searchIcon {
+        margin-left: 70px;
+    }
+
+    .resetButton {
+        width: 70%;
+        margin-left: 120px;
+    }
+}

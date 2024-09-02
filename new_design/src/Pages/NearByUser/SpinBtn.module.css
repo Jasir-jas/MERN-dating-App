@@ -1,0 +1,88 @@
+.container{
+    /* position: absolute; */
+    /* bottom: 15px; */
+    /* left:45%;
+    right: 45%; */
+    /* width: 200px; */
+    background-color: #491650;
+    color:black;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.btncontainer{
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60px;
+    background-color: white;
+    border-radius: 50px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+.curve{
+    width: 68px;
+    height: 30px;
+    background-color: #491650;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    position: relative;
+}
+/* .curve::after{
+    content: "";
+        position: absolute;
+        height: 36px;
+        width: 50px;
+        border-bottom-right-radius: 55%;
+        right: -21px;
+        background-color: purple;
+        border-right: 29px solid white;
+        border-top: 17px solid transparent;
+} */
+.curveinside{
+position: relative;
+    right: 0;
+    height: 28px;
+        width: 33px;
+        right: 33px;
+    background-color: #491650;
+}
+.curv{
+    position: absolute;
+        background-color:white;
+        height: 100%;
+        width: 100%;
+        border-top-right-radius: 72%;
+}
+.curvright{
+position: relative;
+    top: -28px;
+    left: 68px;
+    height: 28px;
+    width: 33px;
+    /* right: 39px; */
+    background-color: #491650;
+}
+.curvrightinside{
+    position: absolute;
+        background-color:white;
+        height: 100%;
+        width: 100%;
+    border-top-left-radius: 73%;
+}
+/* .curve::before {
+    content: "";
+    position: absolute;
+    height: 36px;
+    width: 50px;
+    border-bottom-right-radius: 55%;
+    left: -21px;
+    background-color: purple;
+    border-right: 29px solid white;
+    border-top: 17px solid transparent;
+    transform: scaleX(-1) rotate(360deg);
+} */
+

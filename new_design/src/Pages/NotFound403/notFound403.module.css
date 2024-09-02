@@ -1,0 +1,51 @@
+/* src/components/NotFound.module.css */
+.notFoundContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #4b0054;
+  }
+  
+  .notFoundContent {
+    text-align: center;
+    color: #e7dcdc;
+  }
+  
+  .notFoundErrorCode {
+    font-size: 72px;
+    font-weight: bold;
+    color: #f5e050;
+  }
+  
+  .notFoundMessage {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .notFoundDescription {
+    margin-bottom: 20px;
+  }
+  
+  .notFoundButton {
+    background-color: transparent;
+    border: 2px solid #e7dcdc;
+    color: #e7dcdc;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .notFoundButton:hover {
+    background-color: #e7dcdc;
+    color: #4b0054;
+  }
+  
+  .icon {
+    font-size: 16px;
+  }
+  

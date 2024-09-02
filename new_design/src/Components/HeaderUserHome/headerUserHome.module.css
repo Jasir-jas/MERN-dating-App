@@ -1,0 +1,53 @@
+.header {
+  background-color: #f5ebf5;
+  border-bottom: 1px solid #ddd;
+}
+
+.title {
+  color: #6a1b9a; 
+  font-size: 1.5rem;
+  margin-left: 10px; 
+}
+
+.menuIcon {
+  color: #6a1b9a; 
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.notificationIcon {
+  position: relative;
+  margin-right: 15px; 
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  background-color: white; 
+  border: 1px solid #b8a6c3; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a1882; 
+  position: relative;
+}
+
+.notificationDot {
+  width: 7px;
+  height: 7px;
+  background-color: #f275ba; 
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 2px solid white; 
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd; 
+  cursor: pointer;
+}

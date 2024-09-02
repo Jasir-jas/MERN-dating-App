@@ -1,0 +1,235 @@
+.editProfileC8ontainer {
+  margin: 0 auto;
+  background-color: #4a0e4e;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 18px;
+  margin-left: 40%;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  background-color: #4a0e4e;
+  color: white;
+  padding: 35px;
+
+}
+
+.backButton {
+  border: 1px solid white;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  border-radius: 50%;
+  background-color: #4a0e4e;
+}
+
+.userProfile {
+  background: white;
+  width: 100%;
+  border-radius: 40px 40px 0 0;
+  padding: 25px;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.profilePicture {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.textInfo {
+  flex-grow: 1;
+}
+
+.textInfo h2 {
+  margin: 0 0 5px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.profileMotto {
+  font-style: italic;
+  color: #666;
+  margin: 0;
+}
+
+.infoMessage {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.editForm input,
+.editForm textarea {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1.5px solid #4a0e4e;
+  font-size: 16px;
+  outline: none;
+}
+
+.imageSection,
+.reelsSection {
+  margin: 20px 0;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageContainer {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.imageGrid img,
+.addImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.addImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+.uploadedImage{
+  cursor: pointer;
+}
+
+.reelContainer {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.uploadedVideoContainer{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.uploadedVideo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.addReel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+.changePassword {
+  background: none;
+  border: none;
+  color: #4a0e4e;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.updateButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #4a0e4e;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .editProfileContainer {
+    border-radius: 0;
+  }
+
+  .backButton {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profileHeader {
+    border-radius: 0;
+  }
+
+  .profilePicture {
+    width: 80px;
+    height: 80px;
+  }
+
+  .imageGrid img,
+  .reelsGrid img,
+  .addImage,
+  .addReel {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .editForm input,
+  .editForm textarea {
+    font-size: 14px;
+  }
+
+  .updateButton {
+    font-size: 16px;
+  }
+
+  .backButton {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

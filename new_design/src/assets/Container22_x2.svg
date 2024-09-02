@@ -1,0 +1,18 @@
+<svg width="582" height="570" viewBox="0 0 582 570" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<mask id="mask_0_8_5985" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="226" y="44.553467" width="38" height="38">
+<circle cx="264" cy="82.553" r="38" fill="url(#pattern_0_8_5985)"/>
+</mask>
+<g opacity="0.16">
+<path d="M580.439,284.37C580.439,441.422 450.405,568.738 290.001,568.738C129.596,568.738 -0.438,441.422 -0.438,284.37C-0.438,127.316 129.596,0 290.001,0C450.405,0 580.439,127.316 580.439,284.37Z" stroke="#DD88CF" stroke-width="2" stroke-miterlimit="3.999327" stroke-linecap="square" stroke-dasharray="8 12 "/>
+</g>
+<g opacity="0.15">
+<path d="M492.374,283.495C492.374,393.367 401.404,482.435 289.188,482.435C176.97,482.435 86,393.367 86,283.495C86,173.623 176.97,84.553 289.188,84.553C401.404,84.553 492.374,173.623 492.374,283.495Z" fill="#DD88CF"/>
+</g>
+<path d="M156,523.331C156.008,526.558 155.255,529.74 153.8,532.62C152.075,536.071 149.424,538.974 146.143,541.003C142.861,543.032 139.08,544.107 135.222,544.109C131.996,544.117 128.813,543.364 125.933,541.909L112,546.553L116.644,532.62C115.19,529.74 114.436,526.558 114.444,523.331C114.446,519.473 115.521,515.692 117.551,512.411C119.58,509.13 122.482,506.478 125.933,504.754C128.813,503.299 131.996,502.545 135.222,502.554L136.444,502.554C141.539,502.835 146.352,504.985 149.96,508.593C153.568,512.202 155.719,517.014 156,522.109L156,523.331Z" fill="#DD88CF" stroke="#DD88CF" stroke-width="2" stroke-miterlimit="3.999327" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M129.001,523.552C129.554,523.552 130.001,523.104 130.001,522.552C130.001,522 129.554,521.552 129.001,521.552C128.449,521.552 128.001,522 128.001,522.552C128.001,523.104 128.449,523.552 129.001,523.552Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.6" stroke-miterlimit="3.999327" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="135.999" cy="522.552" r="1" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.6" stroke-miterlimit="3.999327" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M143,523.552C143.553,523.552 144,523.104 144,522.552C144,522 143.553,521.552 143,521.552C142.448,521.552 142,522 142,522.552C142,523.104 142.448,523.552 143,523.552Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.6" stroke-miterlimit="3.999327" stroke-linecap="round" stroke-linejoin="round"/>
+<g mask="url(#mask_0_8_5985)">
+<rect  x="226" y="30.553" width="76" height="114" fill="url(#pattern_0_8_5986)"/>
+</g>
+</svg>

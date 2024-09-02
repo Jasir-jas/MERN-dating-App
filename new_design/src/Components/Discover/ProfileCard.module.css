@@ -1,0 +1,94 @@
+.profileCard {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    width: 100px;
+    height: 150px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* border: 2px solid #ec9ab6; */
+}
+.profileCard::after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50%;
+    background:linear-gradient(0deg, rgba(73, 22, 80, 0.8436624649859944) 10%, rgba(73, 22, 80, 0) 88%);
+}
+/* 180,300 */
+.matchBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border:1px solid #ec9ab6;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius:10px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color:#491650;
+}
+/* 12,2,8 */
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profileOverlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    z-index: 1;
+}
+
+.profileDistance {
+    background-color: rgba(162, 156, 161, 0.411);
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    padding: 2px 4px;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(245, 245, 245, 0.356);
+}
+
+.profileName {
+    /* font-size: 1rem; */
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.profileLocation {
+    font-size: 14px;
+}
+
+.onlineStatus {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background-color: #0f0;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+@media(min-width:400px){
+    .profileCard{
+        height:250px ;
+        width: 180px;
+    }
+}

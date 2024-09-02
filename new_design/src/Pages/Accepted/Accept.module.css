@@ -1,0 +1,274 @@
+:root {
+    --primary-color: #fcfcfc;
+    --background-color: #f5f5f5;
+    --text-color: #000;
+    --white-color: #fff;
+    --gray-color: gray;
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .app {
+        flex-direction: row;
+    }
+}
+
+.contactList {
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+    top: 12rem;
+    background-color: var(--primary-color)  ;
+    border-radius: 30px 30px 0 0;
+    z-index: 999;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.contactListContent {
+    position: relative;
+    top: 2rem;
+    z-index: 1000;
+    margin: 1rem 2rem;
+}
+
+@media (min-width: 768px) {
+    .contactList {
+        margin-left: 0;
+        top: -1rem;
+    }
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.contactImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.contactInfo {
+    flex-grow: 1;
+}
+
+.contactName {
+    margin: 0;
+    font-weight: bold;
+}
+
+.contactDate {
+    margin: 0;
+    color: var(--gray-color);
+}
+
+.contactActions .callIcon,
+.videoIcon {
+    margin-left: 1rem;
+    cursor: pointer;
+    color: rgba(165, 163, 163, 0.92);
+    font-size: 1.25rem;
+}
+
+@media (min-width: 1200px) {
+    .contactList {
+        top: 10rem;
+    }
+    .contactItem {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contactImg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .contactName {
+        font-size: 1.2rem;
+    }
+
+    .contactDate {
+        font-size: 1rem;
+    }
+
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .contactList {
+        top: 10rem;
+    }
+    .contactItem {
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .contactImg {
+        width: 55px;
+        height: 55px;
+    }
+
+    .contactName {
+        font-size: 1.1rem;
+    }
+
+    .contactDate {
+        font-size: 0.95rem;
+    }
+
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.35rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .contactItem {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .contactImg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .contactName {
+        font-size: 1rem;
+    }
+
+    .contactDate {
+        font-size: 0.9rem;
+    }
+
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .contactList {
+        top: 8.5rem;
+    }
+
+    .contactItem {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .contactImg {
+        width: 45px;
+        height: 45px;
+    }
+
+    .contactName {
+        font-size: 0.9rem;
+    }
+
+    .contactDate {
+        font-size: 0.8rem;
+    }
+
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contactList {
+        top: 9.5rem;
+    }
+
+    .contactItem {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contactImg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .contactName {
+        font-size: 0.8rem;
+    }
+
+    .contactDate {
+        font-size: 0.7rem;
+    }
+
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 844px) {
+    .contactList {
+        top: 9rem;
+    }
+    .contactItem {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    .contactImg {
+        width: 45px;
+        height: 45px;
+    }
+    .contactName {
+        font-size: 0.9rem;
+    }
+    .contactDate {
+        font-size: 0.8rem;
+    }
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 430px) and (max-width: 926px) {
+    .contactList {
+        top: 9.5rem;
+    }
+    .contactItem {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .contactImg {
+        width: 50px;
+        height: 50px;
+    }
+    .contactName {
+        font-size: 1rem;
+    }
+    .contactDate {
+        font-size: 0.9rem;
+    }
+    .contactActions .callIcon,
+    .videoIcon {
+        font-size: 1.25rem;
+    }
+}

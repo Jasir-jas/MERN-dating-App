@@ -1,0 +1,230 @@
+.pageContainer {
+    margin: 0;
+    padding: 0;
+}
+
+.groupsHeaderContent {
+    background-color: rgb(37, 2, 37);
+    padding: 2rem;
+}
+
+.groupsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contactDot {
+    background-color: rgb(245, 101, 237);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.backIcon {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    color: white;
+}
+
+.Container {
+    border-radius: 25px 25px 0 0;
+    background-color: #ffffff;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.listContainer {
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    flex-grow: 1;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.searchIcon {
+    margin-right: 10px;
+    background-color: violet;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 50%;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+
+.groupItem {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.groupName {
+    font-size: 15px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    color: gray;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.groupProfile {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.profileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    border: 2px solid white;
+}
+
+.profileImg0 {
+    top: 0;
+    left: 0;
+}
+
+.profileImg1 {
+    top: 0;
+    right: 0;
+}
+
+.profileImg2 {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 375px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .Container {
+        padding: 12px;
+        top: -20px;
+    }
+
+    .groupItem {
+        padding: 10px;
+    }
+
+    .groupName {
+        font-size: 13px;
+    }
+
+    .backIcon {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 768px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .Container {
+        padding: 14px;
+        top: -25px;
+    }
+
+    .groupItem {
+        padding: 12px;
+    }
+
+    .groupName {
+        font-size: 14px;
+    }
+
+    .backIcon {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .Container {
+        padding: 16px;
+        top: -30px;
+    }
+
+    .groupItem {
+        padding: 14px;
+    }
+
+    .groupName {
+        font-size: 15px;
+    }
+
+    .backIcon {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .Container {
+        padding: 18px;
+        top: -30px;
+    }
+
+    .groupItem {
+        padding: 16px;
+    }
+
+    .groupName {
+        font-size: 16px;
+    }
+
+    .backIcon {
+        font-size: 26px;
+    }
+}

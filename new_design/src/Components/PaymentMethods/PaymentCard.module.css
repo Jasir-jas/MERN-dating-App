@@ -1,0 +1,26 @@
+.container{
+height: 65px;
+display: flex;
+padding: 10px;
+align-items: center;
+justify-content: center;
+gap: 30px;
+/* border: 1px solid red; */
+border-radius: 10px;
+box-shadow: 0px 0px 10px -5px black;
+cursor: pointer;
+}
+.clicked{
+    border: 1px solid red;
+    box-shadow: none;
+}
+.image{
+height: 50px;
+width: 50px;
+object-fit: contain;
+}
+.text>span{
+color: gray;
+letter-spacing: 1px;
+font-size: 0.8rem;
+}

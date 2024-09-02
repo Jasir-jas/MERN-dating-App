@@ -1,0 +1,81 @@
+.profileCard {
+    position: relative;
+    width: 180px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ec9ab6;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .profileCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .matchBadge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ec9ab6;
+    color: #fff;
+    padding: 2px 6px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profileOverlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .profileDistance {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2px 6px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  .profileName {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .profileLocation {
+    font-size: 0.8rem;
+  }
+  
+  .onlineStatus {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #0f0;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  

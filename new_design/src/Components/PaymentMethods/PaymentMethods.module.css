@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    align-items: center;
+    padding: 15px;
+}
+.payment{
+height:96% ;
+max-width: 500px;
+padding-left: 5px;
+padding-right: 5px;
+font-family: "Roboto";
+}
+.header{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.headerbtns{
+    display: flex;
+    justify-content: space-between;
+}
+.headerbtns>button{
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.cls{
+    height: 30px;
+    width: 30px;
+}
+.cls>*{
+    height: 100%;
+    width: 100%;
+}
+.headercnts>h1{
+    margin-bottom: 15px;
+    text-align: justify;
+    letter-spacing: 0.9px;
+    font-size: 1.8rem;
+    color: #3e0745eb;
+    /* text-align: center; */
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+.content{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 10px;
+}
+.addbtn{
+    height: 70px;
+    border-radius: 10px;
+}
+.addbtn>button{
+    height: 100%;
+    width: 100%;
+    background-color: #3e0745eb;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
