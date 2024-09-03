@@ -4,7 +4,6 @@ const FriendRequest = require('../Models/FriendRequest');
 const sentRequestBackend = asyncHandler(async (req, res) => {
     const { receiverId } = req.body
     const senderId = req.user._id
-    console.log('ReceiverId:', receiverId);
 
     const alreadySent = await FriendRequest.findOne({ senderId, receiverId })
     if (alreadySent) {
@@ -17,7 +16,6 @@ const sentRequestBackend = asyncHandler(async (req, res) => {
 
 const GetSentRequestBackend = asyncHandler(async (req, res) => {
     const userId = req.user._id
-    console.log('userIdhe:', userId);
 
     const sentRequests = await FriendRequest.find({ senderId: userId })
         .populate({
@@ -25,10 +23,18 @@ const GetSentRequestBackend = asyncHandler(async (req, res) => {
             select: 'name email',
             populate: {
                 path: 'profile',
-                elect: 'profile_image_urls'
+                select: 'profile_image_urls'
             }
-        }).sort({ viewDate: -1 })
+        }).sort({ createdAt: -1 })
     res.json({ success: true, sentRequests })
 })
 
-module.exports = { sentRequestBackend, GetSentRequestBackend }
+const removeRequestBackend = asyncHandler(async (req, res) => {
+    const { receiverId } = req.body
+    const senderId = req.user._id
+    console.log('ReceiverId Reached:', receiverId);
+    await FriendRequest.findOneAndDelete({ senderId, receiverId })
+    res.json({ success: true, message: 'Removed' })
+})
+
+module.exports = { sentRequestBackend, GetSentRequestBackend, removeRequestBackend }

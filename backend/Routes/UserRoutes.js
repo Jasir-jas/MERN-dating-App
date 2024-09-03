@@ -12,7 +12,8 @@ const { ChangePasswordBackend } = require('../Controllers/ChangePasswordControll
 const { UserHomeProfilesBackend } = require('../Controllers/UserHomeProfilesController')
 const { individualProfileGetBackend } = require('../Controllers/IndividualProfileGetController')
 const { visitprofilesBackend } = require('../Controllers/VisitProfileController')
-const { sentRequestBackend, GetSentRequestBackend } = require('../Controllers/sentFriendRequestController')
+const { sentRequestBackend, GetSentRequestBackend, removeRequestBackend } = require('../Controllers/sentFriendRequestController')
+const { getReceiveRequestBackend, AcceptRequestBackend } = require('../Controllers/ReceiveRequestController')
 
 
 
@@ -28,6 +29,10 @@ router.post('/userInterest', authentication, UserInterest)
 router.post('/edit-profile', authentication, EditProfileBackend)
 router.post('/edit-password', authentication, ChangePasswordBackend)
 router.post('/sent-friendRequest', authentication, sentRequestBackend)
+router.post('/remove-sentRequest', authentication, removeRequestBackend)
+router.post('/accept-request', authentication, AcceptRequestBackend)
+
+
 
 
 
@@ -37,6 +42,8 @@ router.get('/fetch-allusers', authentication, UserHomeProfilesBackend)
 router.get('/get-profile', authentication, individualProfileGetBackend)
 router.get('/getVisit-profiles', authentication, visitprofilesBackend)
 router.get('/get-sentRequest', authentication, GetSentRequestBackend)
+router.get('/get-receivedRequest', authentication, getReceiveRequestBackend)
+
 
 
 

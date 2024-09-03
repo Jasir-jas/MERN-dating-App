@@ -6,6 +6,7 @@ const sentFriendRequest = async (receiverId) => {
     const token = localStorage.getItem('token')
     if (!token) {
         console.log('No token found');
+        return
     }
     try {
         const response = await axios.post(`${API_URL}sent-friendRequest`, { receiverId }, {
@@ -39,4 +40,22 @@ const getFriendRequest = async () => {
     }
 }
 
-export { sentFriendRequest, getFriendRequest }
+const removeSentRequest = async (receiverId) => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+        console.log('No token found');
+        return
+    }
+    try {
+        const response = await axios.post(`${API_URL}remove-sentRequest`, { receiverId }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Server no responded:', error);
+        return
+    }
+}
+export { sentFriendRequest, getFriendRequest, removeSentRequest }
