@@ -7,38 +7,72 @@ import { UserContext } from '../Context/UserContext';
 import { FetchIndividualProfile } from '../../Services/IndividualProfileGetAPI';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import { sentFriendRequest } from '../../Services/FriendRequestAPI';
+import { getAcceptRequest } from '../../Services/getAcceptRequestAPI';
 
 const ProfileView = () => {
     const { profileId } = useParams()
     const { user } = useContext(UserContext)
     const [loading, setLoading] = useState(true)
+    const [profile, setProfile] = useState(null)
     const [error, setError] = useState('')
     const [message, setMessage] = useState('')
+    const [requestAccepted, setRequestAccepted] = useState(false)
 
+    const fetchAcceptUsers = async () => {
+        try {
+            const response = await getAcceptRequest(profileId);
+            if (response && response.success) {
+                if (response.status) {
+                    console.log('Friend request status:', response.status);
+                    setRequestAccepted(response.status === 'accepted');
+                } else if (response.acceptedRequest) {
+                    console.log('Accepted requests:', response.acceptedRequest);
+                    const currentUserAccepted = response.acceptedRequest.some(
+                        (request) => request.senderId._id === profileId
+                    );
+                    const profileAccepted = response.acceptedRequest.some(
+                        (request) => request.receiverId === profileId
+                    );
+                    console.log('Is current profile accepted:', currentUserAccepted || profileAccepted);
+                    setRequestAccepted(currentUserAccepted || profileAccepted);
+                }
+            } else {
+                setError(response.error || 'Failed to fetch accepted requests');
+            }
+        } catch (error) {
+            console.error('Error checking friend request status:', error);
+            setError('Failed to check friend request status');
+        }
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        fetchAcceptUsers();
+    }, [profileId, user]);
 
     // For sent Friend Request
     const handleSentFriendRequest = async (receiverId) => {
         console.log('receiverId:', receiverId);
         try {
-            const response = await sentFriendRequest(receiverId)
+            const response = await sentFriendRequest(receiverId);
             if (response && response.success) {
-                console.log(response.message);
-                setMessage(response.message)
+                console.log('Friend request sent successfully:', response.message);
+                setMessage(response.message);
+                await fetchAcceptUsers(); // Recheck status after sending request
             } else {
-                console.log(response.error);
-                setError(response.error)
+                console.log('Error in sending friend request:', response.error);
+                setError(response.error || 'Failed to send friend request');
             }
         } catch (error) {
-            console.log('FrontEnd api no response');
+            console.log('Frontend API call failed:', error);
             setError('Failed to send friend request.');
         }
         setTimeout(() => {
             setError("");
             setMessage("");
         }, 1500);
-    }
+    };
 
-    const [profile, setProfile] = useState(null)
     useEffect(() => {
         if (user === null || user === undefined) {
             return;
@@ -68,11 +102,12 @@ const ProfileView = () => {
         fetchUserProfile()
     }, [profileId, user])
 
+
     if (user === null || user === undefined) {
         return <LoadingPage />;
     }
     if (loading) return <div>{<LoadingPage />}</div>;
-    if (!loading && !profile) return <div>No profile data available</div>;
+    if (!loading && !profile) return <div>{<LoadingPage />}</div>;
 
     return (
         <div
@@ -148,17 +183,37 @@ const ProfileView = () => {
                 </div>
 
                 <div className={styles.footerContainer}>
-                    <button className={`${styles.footerButton} ${styles.dislikeButton}`}>X</button>
-                    <button className={`${styles.footerButton} ${styles.starButton}`}>★</button>
+                    <div className={styles.buttonWrapper}>
+                        <button className={`${styles.footerButton} ${styles.dislikeButton}`}>X</button>
+                        <div className={styles.hoverText}>Dislike</div>
+                    </div>
 
-                    <button type='submit' className={`${styles.footerButton} ${styles.likeButton}`}
-                        onClick={() => handleSentFriendRequest(profileId)}>
-                        <div className={styles.heartHoverText}>Sent Request</div>
-                        <i className="fas fa-heart"></i>
-                    </button>
+                    <div className={styles.buttonWrapper}>
+                        <button className={`${styles.footerButton} ${styles.starButton}`}>★</button>
+                        <div className={styles.hoverText}>Shortlist</div>
+                    </div>
 
-                    <button className={`${styles.footerButton} ${styles.chatButton}`}>💬</button>
+                    <div className={styles.buttonWrapper}>
+                        {!requestAccepted ? (
+                            <button
+                                type='submit'
+                                className={`${styles.footerButton} ${styles.likeButton}`}
+                                onClick={() => handleSentFriendRequest(profileId)}
+                            >
+                                <i className="fas fa-heart"></i>
+                                <div className={styles.hoverText}>Send Request</div>
+                            </button>
+                        ) : (
+                            <button className={`${styles.footerButton} ${styles.chatButton}`}>
+                                <i className="fas fa-comment"></i>
+                                <div className={styles.hoverText}>Message</div>
+                            </button>
+                        )}
+                    </div>
+
+
                 </div>
+
             </div>
         </div>
     );

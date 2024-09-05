@@ -21,7 +21,29 @@ const FetchIndividualProfile = async (profileId, userId) => {
         console.error('Error fetching profile:', error);
         throw error;
     }
-
-
 }
-export { FetchIndividualProfile }
+
+const CheckFriendRequestStatus = async (profileId) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.log('No token found');
+        return;
+    }
+    try {
+        const response = await axios.get(`${API_URL}checkRequest-status`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }, params: {
+                profileId,
+            }
+        })
+        return response.data
+    } catch (error) {
+        console.error('Error fetching profile:', error);
+        throw error;
+    }
+}
+
+
+
+export { FetchIndividualProfile, CheckFriendRequestStatus }

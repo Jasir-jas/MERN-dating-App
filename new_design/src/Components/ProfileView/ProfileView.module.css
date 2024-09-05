@@ -24,7 +24,6 @@
   width: 80%;
   max-width: 400px;
   text-align: center;
-  /* Allow interaction if needed */
 }
 
 .errorOverlay {
@@ -43,7 +42,6 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
-  /* Prevent interaction with the background */
   pointer-events: none;
 }
 
@@ -312,28 +310,34 @@
   background: rgb(240, 127, 215);
 }
 
-.likeButton:hover .heartHoverText {
-  visibility: visible;
-  opacity: 1;
+.buttonWrapper {
+  position: relative;
+  display: inline-block;
 }
 
-.heartHoverText {
+.hoverText {
   visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  bottom: 20%;
-  left: 60%;
-  transform: translateX(-50%);
-  background-color: #333;
+  background-color: black;
   color: #fff;
   text-align: center;
-  padding: 5px 10px;
   border-radius: 5px;
-  white-space: nowrap;
+  padding: 5px;
+  position: absolute;
   z-index: 1;
-  transition: opacity 0.3s ease-in-out;
-  font-size: 12px;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
+
+.buttonWrapper:hover .hoverText {
+  visibility: visible;
+  opacity: 1;
+  font-size: small;
+}
+
 
 .chatButton {
   color: white;

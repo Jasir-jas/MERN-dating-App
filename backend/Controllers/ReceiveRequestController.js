@@ -18,23 +18,39 @@ const getReceiveRequestBackend = asyncHandler(async (req, res) => {
 const AcceptRequestBackend = asyncHandler(async (req, res) => {
     const { senderId } = req.body;
     const userId = req.user._id;
-    console.log('SenderId here:', senderId, 'And:', userId);
 
     const acceptRequest = await FriendRequest.findOne({
         senderId: senderId,
         receiverId: userId,
         status: 'pending'
     });
-
     if (acceptRequest) {
+        console.log('Before accept:', acceptRequest);
         acceptRequest.status = 'accepted';
         await acceptRequest.save();
-
-        console.log('Friend Request accepted');
+        console.log('After accept:', acceptRequest);
         return res.json({ success: true, message: 'Friend Request accepted' });
     } else {
         return res.json({ error: 'Invalid or already processed request.' });
     }
 });
 
-module.exports = { getReceiveRequestBackend, AcceptRequestBackend }
+const RejectRequestBackend = asyncHandler(async (req, res) => {
+    const { senderId } = req.body;
+    const userId = req.user._id;
+
+    const rejectRequest = await FriendRequest.findOne({
+        senderId: senderId,
+        receiverId: userId,
+        status: 'pending'
+    });
+    if (rejectRequest) {
+        rejectRequest.status = 'rejected';
+        await rejectRequest.save();
+        return res.json({ success: true, message: 'Friend Request rejected' });
+    } else {
+        return res.json({ error: 'Invalid or already processed request.' });
+    }
+});
+
+module.exports = { getReceiveRequestBackend, AcceptRequestBackend, RejectRequestBackend }

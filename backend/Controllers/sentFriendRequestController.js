@@ -5,9 +5,14 @@ const sentRequestBackend = asyncHandler(async (req, res) => {
     const { receiverId } = req.body
     const senderId = req.user._id
 
-    const alreadySent = await FriendRequest.findOne({ senderId, receiverId })
-    if (alreadySent) {
-        return res.json({ error: 'Request already sented' })
+    const existingRequest = await FriendRequest.findOne({
+        $or: [
+            { senderId, receiverId, status: 'pending' },
+            { senderId: receiverId, receiverId: senderId, status: 'pending' }
+        ]
+    });
+    if (existingRequest) {
+        return res.json({ error: 'A friend request has already been sent or receive.' });
     }
     const sentRequest = new FriendRequest({ receiverId, senderId })
     await sentRequest.save()

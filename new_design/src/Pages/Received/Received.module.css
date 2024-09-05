@@ -64,12 +64,46 @@
     color: #666;
 }
 
-.contactActions .closeIcon,
-.heartIcon {
-    font-size: 1.2rem;
+.iconContainer {
+    position: relative;
+    display: inline-block;
     color: #8a8484;
     cursor: pointer;
 }
+
+.tooltipText {
+    visibility: hidden;
+    width: 80px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltipText::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.iconContainer:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 @media (max-width: 600px) {
     .contactList {

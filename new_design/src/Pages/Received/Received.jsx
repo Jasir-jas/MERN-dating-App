@@ -4,7 +4,7 @@ import styles from "./Received.module.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
-import { AcceptRequest, getReceivedRequest } from "../../Services/ReceivedRequestAPI";
+import { AcceptRequest, RejectRequest, getReceivedRequest } from "../../Services/ReceivedRequestAPI";
 
 const groupContacts = (contacts) => {
     return contacts.reduce((acc, contact) => {
@@ -46,13 +46,41 @@ const Received = () => {
         }
     }
 
+    const handleRejectRequest = async (senderId) => {
+        try {
+            const response = await RejectRequest(senderId)
+            console.log('RejectId:', senderId);
+            if (response && response.success) {
+                console.log('Reject request');
+
+                setGetReceiveRequest((prevRequests) => {
+                    const updatedRequests = { ...prevRequests };
+                    Object.keys(updatedRequests).forEach((letter) => {
+                        updatedRequests[letter] = updatedRequests[letter].filter(
+                            (request) => request.senderId !== senderId
+                        );
+                        // Remove the letter group if it's empty
+                        if (updatedRequests[letter].length === 0) {
+                            delete updatedRequests[letter];
+                        }
+                    });
+                    return updatedRequests;
+                });
+            }
+        } catch (error) {
+            console.log("Frontend api not responded");
+        }
+    }
+
     useEffect(() => {
         const fetchReceievedRequest = async () => {
             try {
-                const response = await getReceivedRequest()
+                const response = await getReceivedRequest();
                 if (response && response.success) {
-                    console.log('ReceivedRequests:', response.receiveRequests);
-                    const sortedProfiles = response.receiveRequests.sort((a, b) =>
+                    const pendingRequests = response.receiveRequests.filter(
+                        (request) => request.status === 'pending'
+                    );
+                    const sortedProfiles = pendingRequests.sort((a, b) =>
                         a.senderId.name.localeCompare(b.senderId.name)
                     );
                     const groupedContacts = groupContacts(sortedProfiles);
@@ -63,11 +91,12 @@ const Received = () => {
             } catch (error) {
                 console.log("Frontend api not responded");
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
-        }
+        };
         fetchReceievedRequest()
     }, [])
+
     if (loading) {
         return <LoadingPage />
     }
@@ -88,19 +117,36 @@ const Received = () => {
                                     {getReceiveRequest[letter].map((receive, index) => (
                                         <div key={index} className={styles.contactItem}>
                                             <img src={receive.senderId?.profile?.profile_image_urls?.[0]}
-                                                alt={receive.senderId.name} className={styles.contactImg} />
+                                                alt={receive.senderId.name}
+                                                className={styles.contactImg} />
 
                                             <div className={styles.contactInfo}>
-                                                <p className={styles.contactName}>{receive.senderId?.name}</p>
+                                                <p className={styles.contactName}>
+                                                    {receive.senderId?.name}
+                                                </p>
                                                 <p className={styles.contactDate}>
                                                     {new Date(receive.updatedAt).toLocaleDateString()} at {new Date(receive.updatedAt).toLocaleTimeString()}
                                                 </p>
                                             </div>
+
                                             <div className={styles.contactActions}>
-                                                <FaHeart className={styles.heartIcon}
-                                                    onClick={() => handleAcceptRequest(receive.senderId)} />&nbsp;&nbsp;
-                                                <FaTimes className={styles.closeIcon} />
+                                                <div className={styles.iconContainer}>
+                                                    <FaHeart
+                                                        className={styles.heartIcon}
+                                                        onClick={() => handleAcceptRequest(receive.senderId)}
+                                                    />
+                                                    <div className={styles.tooltipText}>Accept</div>
+                                                </div>
+                                                &nbsp;&nbsp;
+                                                <div className={styles.iconContainer}>
+                                                    <FaTimes
+                                                        className={styles.closeIcon}
+                                                        onClick={() => handleRejectRequest(receive.senderId)}
+                                                    />
+                                                    <div className={styles.tooltipText}>Reject</div>
+                                                </div>
                                             </div>
+
                                         </div>
                                     ))}
                                 </div>
