@@ -3,7 +3,6 @@ const asyncHandler = require('express-async-handler')
 
 const UserInterest = asyncHandler(async (req, res) => {
     const { userInterest } = req.body
-    console.log('UserInterest:', userInterest);
     if (!userInterest) {
         return res.json({ error: 'User Interest is required' })
     }

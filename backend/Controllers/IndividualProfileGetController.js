@@ -35,25 +35,4 @@ const individualProfileGetBackend = asyncHandler(async (req, res) => {
     res.json({ success: true, profile });
 });
 
-
-// const checkFriendRequestStatusBackend = asyncHandler(async (req, res) => {
-//     const { profileId } = req.params; // Assuming profileId is sent as a URL parameter
-//     const userId = req.user._id;
-
-//     // Check if there is an accepted friend request between the users
-//     const friendRequest = await FriendRequest.findOne({
-//         $or: [
-//             { senderId: userId, receiverId: profileId, status: 'accepted' },
-//             { senderId: profileId, receiverId: userId, status: 'accepted' }
-//         ]
-//     });
-//     console.log('Friend Request:', friendRequest);
-
-//     if (friendRequest) {
-//         return res.json({ success: true, requestAccepted: true });
-//     }
-//     res.json({ success: true, requestAccepted: false });
-
-// });
-
 module.exports = { individualProfileGetBackend };

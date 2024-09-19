@@ -16,6 +16,11 @@ const { sentRequestBackend, GetSentRequestBackend, removeRequestBackend } = requ
 const { getReceiveRequestBackend, AcceptRequestBackend, RejectRequestBackend } = require('../Controllers/ReceiveRequestController')
 const { getRejectedReqBackend } = require('../Controllers/GetRejectedController')
 const { getAcceptedReqBackend } = require('../Controllers/getAcceptController')
+const { ShortListBackend, getShortlistedBackend, removeShortlistBackend, getShortListedByBackend } = require('../Controllers/ShortListController')
+const { FilterQualificationBackend } = require('../Controllers/FilterController')
+const { fetchMessageProfileBackend } = require('../Controllers/PersonalMessageController')
+const { FetchFriendsBackend } = require('../Controllers/ParentMessageController')
+const { ChattingImageUploadBackend } = require('../Controllers/ChattingImagesController')
 
 
 
@@ -34,6 +39,12 @@ router.post('/sent-friendRequest', authentication, sentRequestBackend)
 router.post('/remove-sentRequest', authentication, removeRequestBackend)
 router.post('/accept-request', authentication, AcceptRequestBackend)
 router.post('/reject-request', authentication, RejectRequestBackend)
+router.post('/shortList', authentication, ShortListBackend)
+router.post('/remove-shortlist', authentication, removeShortlistBackend)
+router.post('/chatImage-upload', authentication, ChattingImageUploadBackend)
+
+
+
 
 
 
@@ -49,6 +60,16 @@ router.get('/get-sentRequest', authentication, GetSentRequestBackend)
 router.get('/get-receivedRequest', authentication, getReceiveRequestBackend)
 router.get('/get-rejectedRequest', authentication, getRejectedReqBackend)
 router.get('/get-acceptedRequest', authentication, getAcceptedReqBackend)
+router.get('/get-shortlisted', authentication, getShortlistedBackend)
+router.get('/get-shortlistedBy', authentication, getShortListedByBackend)
+router.get('/get-filterQualification', authentication, FilterQualificationBackend)
+router.get('/get-personalMessage-Profile', authentication, fetchMessageProfileBackend)
+router.get('/message-acceptedRequests', authentication, FetchFriendsBackend)
+
+
+
+
+
 
 
 

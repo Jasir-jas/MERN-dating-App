@@ -8,7 +8,6 @@ const userContext = asyncHandler(async (req, res) => {
     const user = await User.findById(userId).populate('profile').populate('employer')
 
     if (!user) {
-        console.log('User not found');
         return res.json({ error: 'User not found' })
     }
     return res.json({

@@ -6,6 +6,43 @@
     height: 100vh;
 }
 
+.messageOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.errorOverlay {
+    color: rgb(211, 52, 52);
+}
+
+.successOverlay {
+    color: rgb(40, 126, 40);
+}
+
+.backgroundDimmer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    pointer-events: none;
+}
+
 .contactList {
     flex-grow: 1;
     width: 100%;
@@ -64,12 +101,58 @@
     color: #666;
 }
 
-.contactActions .closeIcon,
-.heartIcon {
-    font-size: 1.2rem;
-    color: #8a8484;
+.HeartIconContainer {
+    position: relative;
+    display: inline-block;
     cursor: pointer;
+    color: gray;
 }
+
+.HoverText {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: small;
+}
+
+.heartIcon {
+    color: gray;
+}
+
+.heartIcon:hover {
+    color: red;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.heartIconFilled {
+    color: red;
+}
+
+.heartIconFilled:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.closeIcon:hover {
+    color: #333;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.HeartIconContainer:hover .HoverText {
+    display: block;
+}
+
+
 
 @media (max-width: 600px) {
     .contactList {

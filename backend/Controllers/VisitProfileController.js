@@ -3,7 +3,6 @@ const asyncHandler = require('express-async-handler')
 
 const visitprofilesBackend = asyncHandler(async (req, res) => {
     const ownerId = req.user._id
-    console.log('Owner Id:', ownerId);
 
     const visit = await VisitProfiles.find({ ownerId })
         .populate({
@@ -15,9 +14,6 @@ const visitprofilesBackend = asyncHandler(async (req, res) => {
             },
         })
         .sort({ viewDate: -1 })
-
-    console.log('Visited Profiles:', visit);
-
     res.json({ success: true, visitedProfiles: visit })
 
 })

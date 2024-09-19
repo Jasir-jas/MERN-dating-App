@@ -1,0 +1,227 @@
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #5d1451;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #5d1451;
+}
+
+.backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    background-color: #5d1451;
+
+}
+
+.callButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.contactName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.chatArea {
+    flex-grow: 1;
+    background-color: white;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.dateIndicator {
+    text-align: center;
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.messageWrapper {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.45em 1rem;
+    border-radius: 1rem;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.messageImage {
+    width: 100px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.imageMessage {
+    margin-bottom: 10px;
+}
+
+.timestamp {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 0.55em;
+    color: #888;
+}
+
+.received {
+    background-color: #e6d1f2;
+    color: #4a1d6e;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+.sent {
+    background-color: #e6f2ff;
+    color: #1d3a6e;
+    margin-left: auto;
+    border-top-right-radius: 0;
+}
+
+.imagePreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.imagePreview img {
+    max-width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.inputArea {
+    display: flex;
+    padding: 1rem;
+    background-color: white;
+    align-items: center;
+}
+
+.messageInput {
+    flex-grow: 1;
+    min-width: 300px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 1.5rem;
+    background-color: #f0f0f0;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.iconGroup {
+    display: flex;
+    align-items: center;
+}
+
+.attachButton,
+.voiceButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #4a90e2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .contactName {
+        font-size: 1rem;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .inputArea {
+        padding: 0.5rem;
+    }
+
+    .messageInput {
+        min-width: 200px;
+        font-size: 0.9rem;
+    }
+
+    .attachButton,
+    .voiceButton {
+        font-size: 1.2rem;
+        padding: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0.3rem;
+    }
+
+    .backButton,
+    .callButton {
+        font-size: 1.2rem;
+    }
+
+    .contactName {
+        font-size: 0.9rem;
+    }
+
+    .message {
+        max-width: 90%;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .inputArea {
+        padding: 0.3rem;
+    }
+
+    .messageInput {
+        min-width: 150px;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .attachButton,
+    .voiceButton {
+        font-size: 1rem;
+        padding: 0.2rem;
+    }
+}

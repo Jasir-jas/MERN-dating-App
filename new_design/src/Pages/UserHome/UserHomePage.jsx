@@ -77,7 +77,7 @@ function UserHomePage() {
       {leftSideNavBar && <LeftSideMenu />}
       {notificationView && <Notifications setNotificationView={setNotificationView} />}
       <Stories />
-      {/* <Filters /> */}
+      <Filters />
       <Profiles />
       <Footer />
       <InterestModal show={modalShow} handleClose={handleModalClose} />

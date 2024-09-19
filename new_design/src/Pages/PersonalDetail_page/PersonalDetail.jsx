@@ -38,58 +38,6 @@ const PersonalDetail = () => {
       }));
     }
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     // Prepare image and video files for upload
-  //     const imagesToUpload = formData.profile_image_urls.filter(file => file instanceof File);
-  //     // const reelToUpload = selectedReel ? [selectedReel] : []; // Use the selectedReel state
-
-  //     const reelToUpload = formData.profile_video_urls instanceof File ? [formData.profile_video_urls] : [];
-  //     const allFiles = [...imagesToUpload, ...reelToUpload];
-  //     console.log("Files to upload:", allFiles);
-
-  //     // Upload the files to Cloudinary and get back the URLs
-  //     const fileUrls = await Upload(allFiles);
-  //     console.log("Uploaded file URLs:", fileUrls);
-
-  //     // Check if fileUrls contains URLs for both images and video
-  //     if (fileUrls.length === 0) {
-  //       throw new Error("No file URLs received from upload.");
-  //     }
-
-  //     // Split the URLs into image URLs and video URL
-  //     const imageUrls = fileUrls.slice(0, imagesToUpload.length);
-  //     const videoUrl = reelToUpload.length > 0 ? fileUrls[imagesToUpload.length] : null;
-
-  //     // Ensure the video URL is correct
-  //     if (reelToUpload.length > 0 && !videoUrl) {
-  //       throw new Error("Video URL not received.");
-  //     }
-
-  //     // Prepare the final form data with the correct URLs
-  //     const finalFormData = {
-  //       ...formData,
-  //       profile_image_urls: imageUrls,
-  //       profile_video_urls: videoUrl
-  //     };
-  //     console.log("Final form data:", finalFormData);
-
-  //     // Submit the profile data
-  //     const response = await Profile(finalFormData);
-  //     console.log("Profile successfully added", response);
-  //     if (response.success) {
-  //       setMessage(response.message)
-  //       navigate('/employement')
-  //     } else {
-  //       console.error('Unexpected response format:', response);
-  //     }
-  //   } catch (error) {
-  //     console.error('Registration failed:', error.response ? error.response.data : error.message);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

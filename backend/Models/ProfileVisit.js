@@ -13,11 +13,6 @@ const ProfileVisitSchema = new mongoose.Schema({
         required: true,
         index: true  // Index for faster queries
     },
-    // profile: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Profile',
-    //     required: true
-    // },
     ownerEmail: {
         type: String,
         require: true

@@ -1,51 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaHeart, FaTimes } from "react-icons/fa";
 import styles from "./Shortlisted.module.css"; // Import CSS module
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-
-const contacts = [
-    {
-        name: "Team Align",
-        date: "Today, 09:30 AM",
-        imgSrc: "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-        name: "Binoj varghes",
-        date: "Today, 09:30 AM",
-        imgSrc: "https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-        name: "Jhon Abraham",
-        date: "03/07/22, 07:30 AM",
-        imgSrc: "https://plus.unsplash.com/premium_photo-1679865371012-92b8ce5e6d12?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHdvbWVufGVufDB8fDB8fHww",
-    },
-    {
-        name: "Jhon Abraham",
-        date: "Today, 07:30 AM",
-        imgSrc: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fG1lbnxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    {
-        name: "Alex Linderson",
-        date: "Monday, 09:30 AM",
-        imgSrc: "https://plus.unsplash.com/premium_photo-1682096186855-3f32647abe68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d29tZW58ZW58MHx8MHx8fDA%3D",
-    },
-    {
-        name: "Sabila Sayma",
-        date: "Yesterday, 07:35 PM",
-        imgSrc: "https://plus.unsplash.com/premium_photo-1677553954020-68ac75b4e1b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fG1lbnxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    {
-        name: "John Borino",
-        date: "Monday, 09:30 AM",
-        imgSrc: "https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2lybHxlbnwwfHwwfHx8MA%3D%3D",
-    },
-];
+import { getShortListed, removeShortList } from "../../Services/ShortListAPI";
+import LoadingPage from "../../Components/LoadingPage/LoadingPage";
+import { getAcceptRequest } from "../../Services/getAcceptRequestAPI";
+import { sentFriendRequest } from "../../Services/FriendRequestAPI";
 
 const groupContacts = (contacts) => {
-    const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
-    return sortedContacts.reduce((acc, contact) => {
-        const firstLetter = contact.name.charAt(0).toUpperCase();
+    return contacts.reduce((acc, contact) => {
+        const firstLetter = contact.shortListedUserId.name.charAt(0).toUpperCase();
         if (!acc[firstLetter]) {
             acc[firstLetter] = [];
         }
@@ -55,35 +20,151 @@ const groupContacts = (contacts) => {
 };
 
 const Shortlisted = () => {
-    const groupedContacts = groupContacts(contacts);
+    const [getShortListedProfiles, setGetShortListedProfiles] = useState([])
+    const [error, setError] = useState('')
+    const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [acceptRequest, setAcceptRequest] = useState({})
+
+    const handleSentFriendRequest = async (receiverId) => {
+        console.log('receiverId:', receiverId);
+        try {
+            const response = await sentFriendRequest(receiverId);
+            if (response && response.success) {
+                console.log('Friend request sent successfully:', response.message);
+                setMessage(response.message);
+            } else {
+                console.log('Error in sending friend request:', response.error);
+                setError(response.error || 'Failed to send friend request');
+            }
+        } catch (error) {
+            console.log('Frontend API call failed:', error);
+            setError('Failed to send friend request.');
+        }
+    };
+
+
+    const handleRemove = async (profileId) => {
+        try {
+            const response = await removeShortList(profileId)
+            if (response && response.success) {
+                console.log(response.message);
+                setGetShortListedProfiles((prevData) => {
+                    const updatedData = { ...prevData }
+                    Object.keys(updatedData).forEach((letter) => {
+                        updatedData[letter] = updatedData[letter].filter(
+                            (request) => request.shortListedUserId._id !== profileId)
+
+                        if (updatedData[letter].length === 0) {
+                            delete updatedData[letter];
+                        }
+                    })
+                    return updatedData
+                })
+            } else {
+                console.log(response.error);
+            }
+        } catch (error) {
+            console.error('Error in  API:', error);
+        }
+    }
+
+    useEffect(() => {
+        const fetchShortListed = async () => {
+            try {
+                const response = await getShortListed()
+                if (response && response.success) {
+                    console.log('ShortListProfiles:', response.shortlistedProfiles);
+                    const sortedProfiles = response.shortlistedProfiles.sort((a, b) =>
+                        a.shortListedUserId.name.localeCompare(b.shortListedUserId.name)
+                    );
+                    const groupedContacts = groupContacts(sortedProfiles);
+                    setGetShortListedProfiles(groupedContacts);
+
+                    Object.values(groupedContacts).forEach((profileGroup) => {
+                        profileGroup.forEach(async (profile) => {
+                            const friendStatus = await getAcceptRequest(profile.shortListedUserId._id);
+                            setAcceptRequest((prev) => ({
+                                ...prev,
+                                [profile.shortListedUserId._id]: friendStatus.status === 'accepted'
+                            }));
+                        });
+                    });
+                } else {
+                    console.log('Not Fetching this time');
+                }
+            } catch (error) {
+                console.error('Error in  API:', error);
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchShortListed()
+    }, [])
+    if (loading) {
+        return <LoadingPage />
+    }
+
 
     return (
         <>
-        <Header />
-        <div className={styles.app}>
-            <div className={styles.contactList}>
-                {Object.keys(groupedContacts).map((letter) => (
-                    <div key={letter} className={styles.contactGroup}>
-                        <div className={styles.contactGroupLetter}>{letter}</div>
-                        {groupedContacts[letter].map((contact, index) => (
-                            <div key={index} className={styles.contactItem}>
-                                <img src={contact.imgSrc} alt={contact.name} className={styles.contactImg} />
-                                <div className={styles.contactInfo}>
-                                    <p className={styles.contactName}>{contact.name}</p>
-                                    <p className={styles.contactDate}>{contact.date}</p>
+            <Header />
+            <div className={styles.app}>
+                <div className={styles.contactList}>
+                    {Object.keys(getShortListedProfiles).map((letter) => (
+                        <div key={letter} className={styles.contactGroup}>
+                            <div className={styles.contactGroupLetter}>{letter}</div>
+                            {getShortListedProfiles[letter].map((shortlist, index) => (
+                                <div key={index} className={styles.contactItem}>
+                                    <img src={shortlist.shortListedUserId?.profile.profile_image_urls?.[0]}
+                                        alt={shortlist.shortlistedProfiles?.name}
+                                        className={styles.contactImg} />
+                                    <div className={styles.contactInfo}>
+                                        <p className={styles.contactName}>{shortlist.shortListedUserId?.name}</p>
+                                        <p className={styles.contactDate}>
+                                            {new Date(shortlist.createdAt).toLocaleDateString()} at {new Date(shortlist.createdAt).toLocaleTimeString()}
+                                        </p>
+                                    </div>
+
+                                    <div className={styles.contactActions}>
+
+                                        {(error || message) && (
+                                            <>
+                                                <div className={styles.backgroundDimmer}></div>
+                                                <div className={`${styles.messageOverlay} ${error ? styles.errorOverlay : styles.successOverlay}`}>
+                                                    {error && <div>{error}</div>}
+                                                    {message && <div>{message}</div>}
+                                                </div>
+                                            </>
+                                        )}
+
+                                        <div className={styles.HeartIconContainer}>
+                                            {acceptRequest[shortlist.shortListedUserId._id] ? (
+                                                <FaHeart className={styles.heartIconFilled} />
+                                            ) : (
+                                                <FaHeart className={styles.heartIcon}
+                                                    onClick={() => handleSentFriendRequest(shortlist.shortListedUserId._id)}
+                                                />
+                                            )}
+                                            {!acceptRequest[shortlist.shortListedUserId._id] && (
+                                                <div className={styles.HoverText}>Request</div>
+                                            )}
+                                        </div>
+
+                                        <div className={styles.HeartIconContainer}>
+                                            <FaTimes className={styles.closeIcon}
+                                                onClick={() => handleRemove(shortlist.shortListedUserId._id)} />
+                                            <div className={styles.HoverText}>Remove</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className={styles.contactActions}>
-                                    <FaHeart className={styles.heartIcon} />&nbsp;&nbsp;
-                                    <FaTimes className={styles.closeIcon} />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-        <Footer />
-   </> );
+            <Footer />
+        </>);
 };
 
 export default Shortlisted;

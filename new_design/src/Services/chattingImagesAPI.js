@@ -1,15 +1,16 @@
 import axios from 'axios'
 const API_URL = 'http://localhost:4000/users/'
 
-const changePasswordAPI = async (editedPassword) => {
+const chatImagesAPI = async (formData) => {
     const token = localStorage.getItem('token')
     if (!token) {
         console.log('No token found');
     }
     try {
-        const response = await axios.post(`${API_URL}edit-password`, editedPassword, {
+        const response = await axios.post(`${API_URL}chatImage-upload`, formData, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
             }
         })
         return response.data
@@ -17,5 +18,4 @@ const changePasswordAPI = async (editedPassword) => {
         console.log('Server not responded');
     }
 }
-
-export { changePasswordAPI }
+export { chatImagesAPI }

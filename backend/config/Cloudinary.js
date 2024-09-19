@@ -15,6 +15,7 @@ const storage = new CloudinaryStorage({
         const extension = file.mimetype.split('/')[1];
         const folder = file.mimetype.startsWith('video') ? 'profile_videos' : 'profile_pics';
 
+
         return {
             folder: folder,
             format: extension,

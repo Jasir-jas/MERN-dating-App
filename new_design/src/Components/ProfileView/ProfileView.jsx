@@ -8,6 +8,7 @@ import { FetchIndividualProfile } from '../../Services/IndividualProfileGetAPI';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import { sentFriendRequest } from '../../Services/FriendRequestAPI';
 import { getAcceptRequest } from '../../Services/getAcceptRequestAPI';
+import { ShortListedProfiles } from '../../Services/ShortListAPI';
 
 const ProfileView = () => {
     const { profileId } = useParams()
@@ -25,16 +26,6 @@ const ProfileView = () => {
                 if (response.status) {
                     console.log('Friend request status:', response.status);
                     setRequestAccepted(response.status === 'accepted');
-                } else if (response.acceptedRequest) {
-                    console.log('Accepted requests:', response.acceptedRequest);
-                    const currentUserAccepted = response.acceptedRequest.some(
-                        (request) => request.senderId._id === profileId
-                    );
-                    const profileAccepted = response.acceptedRequest.some(
-                        (request) => request.receiverId === profileId
-                    );
-                    console.log('Is current profile accepted:', currentUserAccepted || profileAccepted);
-                    setRequestAccepted(currentUserAccepted || profileAccepted);
                 }
             } else {
                 setError(response.error || 'Failed to fetch accepted requests');
@@ -45,12 +36,10 @@ const ProfileView = () => {
         }
         setLoading(false);
     };
-
     useEffect(() => {
         fetchAcceptUsers();
     }, [profileId, user]);
 
-    // For sent Friend Request
     const handleSentFriendRequest = async (receiverId) => {
         console.log('receiverId:', receiverId);
         try {
@@ -58,7 +47,7 @@ const ProfileView = () => {
             if (response && response.success) {
                 console.log('Friend request sent successfully:', response.message);
                 setMessage(response.message);
-                await fetchAcceptUsers(); // Recheck status after sending request
+                await fetchAcceptUsers();
             } else {
                 console.log('Error in sending friend request:', response.error);
                 setError(response.error || 'Failed to send friend request');
@@ -67,11 +56,11 @@ const ProfileView = () => {
             console.log('Frontend API call failed:', error);
             setError('Failed to send friend request.');
         }
-        setTimeout(() => {
-            setError("");
-            setMessage("");
-        }, 1500);
     };
+    setTimeout(() => {
+        setError("");
+        setMessage("");
+    }, 1500);
 
     useEffect(() => {
         if (user === null || user === undefined) {
@@ -102,6 +91,20 @@ const ProfileView = () => {
         fetchUserProfile()
     }, [profileId, user])
 
+    const handleShortList = async (profileId) => {
+        try {
+            const response = await ShortListedProfiles(profileId)
+            if (response && response.success) {
+                console.log(response.message);
+                setMessage(response.message)
+            } else {
+                console.log(response.error);
+                setError(response.error)
+            }
+        } catch (error) {
+            console.error('Error in  API:', error);
+        }
+    }
 
     if (user === null || user === undefined) {
         return <LoadingPage />;
@@ -189,7 +192,8 @@ const ProfileView = () => {
                     </div>
 
                     <div className={styles.buttonWrapper}>
-                        <button className={`${styles.footerButton} ${styles.starButton}`}>★</button>
+                        <button className={`${styles.footerButton} ${styles.starButton}`}
+                            onClick={() => handleShortList(profileId)}>★</button>
                         <div className={styles.hoverText}>Shortlist</div>
                     </div>
 
@@ -204,10 +208,13 @@ const ProfileView = () => {
                                 <div className={styles.hoverText}>Send Request</div>
                             </button>
                         ) : (
-                            <button className={`${styles.footerButton} ${styles.chatButton}`}>
-                                <i className="fas fa-comment"></i>
-                                <div className={styles.hoverText}>Message</div>
-                            </button>
+                            <Link to={`/personal-messages/${profileId}`}
+                                style={{ textDecoration: 'none' }}>
+                                <button className={`${styles.footerButton} ${styles.chatButton}`}>
+                                    <i className="fas fa-comment"></i>
+                                    <div className={styles.hoverText}>Message</div>
+                                </button>
+                            </Link>
                         )}
                     </div>
 

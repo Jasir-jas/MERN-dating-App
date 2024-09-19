@@ -46,6 +46,7 @@ import Groups from './Pages/Groups/Groups';
 import CreateGroup from './Pages/CreateGroup/CreateGroup';
 import { ModalProvider } from './StateManagement/ModalContext';
 import AddCards from './Pages/AddCard/AddCard';
+import PersonalMessages from './Pages/PersonalMessasges/PersonalMessages';
 
 
 
@@ -53,7 +54,6 @@ const App = () => {
 
    return <>
       <ModalProvider>
-         {/* <BrowserRouter> */}
 
          <Routes className="content">
             <Route path='/' element={<LandingPage />} />
@@ -63,9 +63,9 @@ const App = () => {
             <Route path='/choose-app' element={<ChooseApp />} />
 
             <Route path='/userhome' element={<UserHomePage />} />
-            {/* <Route path='/qualification' element={<Qualification />} />
+            <Route path='/qualification' element={<Qualification />} />
             <Route path='/location' element={<LocationPage />} />
-            <Route path='/designation' element={<DesignationPage />} /> */}
+            <Route path='/designation' element={<DesignationPage />} />
             <Route path='/matches' element={<MatchesPage />} />
             <Route path='/upgradepopup' element={<UpgradePopup />} />
             <Route path='/near-by-user' element={<NearByUser />} />
@@ -86,6 +86,8 @@ const App = () => {
             <Route path="/contacted" element={<Contacted />} />
             <Route path="/shortlistedBy" element={<ShortlistedBy />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/personal-messages/:profileId" element={<PersonalMessages />} />
+
 
 
             <Route path="/change-password" element={<ChangePassword />} />

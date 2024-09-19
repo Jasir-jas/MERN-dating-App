@@ -50,7 +50,6 @@ const RegisterUser = asyncHandler(async (req, res) => {
 
 const LoginUser = asyncHandler(async (req, res) => {
     const { identifier, password } = req.body
-    console.log('Login Data:', identifier, password);
     if (!identifier || !password) {
         return res.json({ error: 'All fields are required' })
     }

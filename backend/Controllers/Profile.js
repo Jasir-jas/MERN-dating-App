@@ -26,7 +26,6 @@ const Uploads = asyncHandler(async (req, res) => {
         message: "Files successfully uploaded",
         fileUrls
     });
-    console.log("Files successfully uploaded:", fileUrls);
 });
 
 
@@ -73,10 +72,8 @@ const ProfileDetails = asyncHandler(async (req, res) => {
         user.profile = profile._id
         await user.save()
 
-        console.log("Profile added successfully");
         return res.json({ success: true, message: "Profile added successfully", profile });
     } catch (error) {
-        console.error("Error saving profile:", error);
         if (error.name === 'ValidationError') {
             return res.status(400).json({ error: error.message, details: error.errors });
         } else {

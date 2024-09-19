@@ -15,8 +15,6 @@ const EditProfileBackend = asyncHandler(async (req, res) => {
         profile_video_urls
     } = req.body;
 
-    console.log('Edit Data reached:', name, username, email, mobile, bio, profile_image_urls, profile_video_urls);
-
     const user = await User.findById(userId).populate('profile');
 
     if (!user) {

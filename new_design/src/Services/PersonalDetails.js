@@ -4,7 +4,6 @@ const API_URL = 'http://localhost:4000/users/'
 
 const Upload = async (files) => {
     const token = localStorage.getItem('token')
-    // console.log("u r token:", token);
     if (!token) {
         console.log('No token found');
         return

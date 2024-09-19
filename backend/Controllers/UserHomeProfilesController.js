@@ -20,7 +20,6 @@ const UserHomeProfilesBackend = asyncHandler(async (req, res) => {
             select: 'type jobTitle companyName designation location',  // Select fields from employer
         })
         .exec();
-    console.log('Users:', users);
 
     let filteredUsers;
     if (loggedInUser.userInterest === 'MEN') {

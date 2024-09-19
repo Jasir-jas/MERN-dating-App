@@ -1,13 +1,14 @@
 import axios from 'axios'
 const API_URL = 'http://localhost:4000/users/'
 
-const changePasswordAPI = async (editedPassword) => {
+const fetchAcceptedRequests = async () => {
     const token = localStorage.getItem('token')
     if (!token) {
         console.log('No token found');
+        return
     }
     try {
-        const response = await axios.post(`${API_URL}edit-password`, editedPassword, {
+        const response = await axios.get(`${API_URL}message-acceptedRequests`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -17,5 +18,4 @@ const changePasswordAPI = async (editedPassword) => {
         console.log('Server not responded');
     }
 }
-
-export { changePasswordAPI }
+export { fetchAcceptedRequests }

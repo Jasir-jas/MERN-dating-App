@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faSliders } from '@fortawesome/free-solid-svg-icons';
@@ -7,10 +7,13 @@ import Footer from '../../Components/Footer/Footer.jsx';
 import LikeAndConnect from '../../Components/LikeAndConnect/LikeAndConnect.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import ProfileCard from '../../Components/ProfileCard/ProfileCard.jsx';
-import matches from '../../SampleData.js'; 
+import { FilterQualification } from '../../Services/FiltersAPI.js';
+import LoadingPage from '../../Components/LoadingPage/LoadingPage.jsx';
 
 const Qualification = () => {
   const [showNavigation, setShowNavigation] = useState(false);
+  const [qualification, setQualification] = useState([])
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
 
   const handleSliderClick = () => {
@@ -20,12 +23,33 @@ const Qualification = () => {
     navigate('/userhome');
   }
 
+  useEffect(() => {
+    const fetchFilterQualification = async () => {
+      try {
+        const response = await FilterQualification()
+        if (response && response.success) {
+          console.log('Qualification:', response.FilterQualifications);
+          setQualification(response.FilterQualifications)
+        }
+      } catch (error) {
+        console.log('Frontend API not response', error);
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchFilterQualification()
+  }, [])
+
+  if (loading) {
+    return <LoadingPage />
+  }
+
   return (
     <Container fluid className={styles.userPages}>
       <div className={styles.header}>
         <FontAwesomeIcon icon={faChevronLeft} transform="shrink-8" className={styles.roundButton} onClick={handleLeftArrowClick} />
         <div className={styles.pageTitle}>Qualification</div>
-        <FontAwesomeIcon icon={faSliders}  transform="shrink-8" className={styles.roundButton} onClick={handleSliderClick} />
+        <FontAwesomeIcon icon={faSliders} transform="shrink-8" className={styles.roundButton} onClick={handleSliderClick} />
       </div>
 
       {showNavigation && (
@@ -37,20 +61,24 @@ const Qualification = () => {
 
       <LikeAndConnect />
       <div className={styles.matchCount}>
-        Your Matches <span className={styles.matchCountNumber}>47</span>
+        Your Matches <span className={styles.matchCountNumber}>{qualification.length}</span>
       </div>
 
       <Row className={styles.matchContainer}>
-        {matches.map((match, index) => (
-          <div key={index} className={`${styles.col} ${styles['col-xs-6']} ${styles['col-md-4']} ${styles['col-lg-2']} ${styles.marginBottom4}`}>
-            <ProfileCard
-              matchPercentage={match.match}
-              imageUrl={match.img}
-              distance={match.distance}
-              name={match.name}
-              age={match.age}
-              location={match.location}
-            />
+        {qualification.map((match, index) => (
+          <div key={index} className={`${styles.col} ${styles['col-xs-6']} ${styles['col-md-4']} 
+          ${styles['col-lg-2']} ${styles.marginBottom4}`}>
+
+            <Link to={`/profileView/${match.userId._id}`}>
+              <ProfileCard
+                matchPercentage='90%'
+                imageUrl={match.profile_image_urls?.[0]}
+                // distance={match.distance}
+                name={match.userId?.name}
+                age={match.age}
+                location={match.location?.name}
+              />
+            </Link>
           </div>
         ))}
       </Row>
